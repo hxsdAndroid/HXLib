@@ -1,5 +1,3 @@
-引用的github的个人写的一个比较好的库
-地址是：
-https://github.com/LuckSiege/PictureSelector
-版本是
-v2.2.3
+# 图片选择和拍照库
+####引用的github的个人写的一个比较好的库，版本号是 v2.2.3
+####地址：https://github.com/LuckSiege/PictureSelector
