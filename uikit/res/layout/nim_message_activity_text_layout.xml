@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textMessageLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F9F9F9"
+    android:paddingBottom="4dip"
+    android:paddingTop="4dp"
+    android:paddingLeft="7dp"
+    android:gravity="center"
+    android:paddingRight="7dp">
+
+    <FrameLayout
+        android:id="@+id/switchLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextMessage"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/bottom_component_margin_horizontal"
+        android:layout_marginRight="@dimen/bottom_component_margin_horizontal">
+
+        <ImageView
+            android:id="@+id/buttonAudioMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/nim_message_button_bottom_audio_selector"
+            android:contentDescription="@string/empty"
+            android:scaleType="center" />
+
+        <ImageView
+            android:id="@+id/buttonTextMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/nim_message_button_bottom_text_selector"
+            android:contentDescription="@string/empty"
+            android:scaleType="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/audioTextSwitchLayout"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/switchLayout"
+        android:layout_marginRight="@dimen/bottom_component_margin_horizontal"
+        android:layout_toLeftOf="@+id/emoji_button"
+        android:layout_toRightOf="@+id/switchLayout">
+
+
+        <Button
+            android:id="@+id/audioRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/nim_message_input_edittext_box"
+            android:text="@string/record_audio"
+            android:textColor="@color/color_black_333333"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:textCursorDrawable="@null"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/nim_input_bg"
+        android:hint="说点什么吧..."
+        android:textColorHint="#FF999999"
+        android:gravity="center_vertical"
+        android:textColor="#333333"
+        android:layout_toLeftOf="@+id/input_gift"
+        android:layout_toRightOf="@+id/switchLayout"
+        android:autoLink="web|email|phone"
+        android:maxHeight="72dip"
+        android:maxLines="4"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/emoji_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/audioTextSwitchLayout"
+        android:layout_marginRight="@dimen/bottom_component_margin_horizontal"
+        android:layout_toLeftOf="@+id/buttonSendMessage"
+        android:visibility="gone"
+        android:background="@drawable/nim_message_button_bottom_emoji_selector"
+        android:contentDescription="@string/empty"
+        android:scaleType="center" />
+
+    <com.netease.nim.uikit.common.ui.widget.LoadingView
+        android:id="@+id/input_gift"
+        android:layout_width="35dp"
+        android:layout_toLeftOf="@+id/buttonSendMessage"
+        android:layout_height="35dp"
+        app:imageSrc="@drawable/bottle_normal"
+        app:imageSrcNoClick="@drawable/bottle_unable"
+        app:AcTextColor="#F4AE56"
+        android:layout_centerVertical="true"
+        android:padding="2dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="3dp"
+        app:AcTextSize="2dp"
+        />
+
+    <TextView
+        android:id="@+id/buttonSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:paddingRight="7dp"
+        android:gravity="center"
+        android:paddingLeft="3dp"
+        android:background="#00000000"
+        android:text="发送"
+        android:layout_alignParentRight="true"
+        android:enabled="false"
+        android:textColor="@color/send_btn"
+        android:textSize="16sp"
+        android:visibility="visible" />
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/sendLayout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBottom="@id/audioTextSwitchLayout"-->
+
+        <!--android:layout_marginRight="@dimen/bottom_component_margin_horizontal">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/buttonMoreFuntionInText"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:visibility="gone"-->
+            <!--android:background="@drawable/nim_message_button_bottom_add_selector"-->
+            <!--android:contentDescription="@string/empty"-->
+            <!--android:scaleType="center" />-->
+
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:visibility="gone"-->
+            <!--android:background="@drawable/nim_message_button_bottom_send_selector"-->
+            <!--android:contentDescription="@string/empty"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/send"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="14sp" />-->
+    <!--</FrameLayout>-->
+
+</RelativeLayout>

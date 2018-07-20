@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    publishNonDefault true
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
+        versionCode 0
+        versionName "1.0"
+        multiDexEnabled true
+    }
+	
+	sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions{
+        abortOnError false
+    }
+}
+
+dependencies {
+    //release时需要把hyphenatechatsdk的依赖注释掉，sdk已经被打成jar包放在libs底下
+    //compile project(':hyphenatechatsdk')
+    api fileTree(include: '*.jar', dir: 'libs')
+    api 'com.android.support:appcompat-v7:27.0.2'
+    api 'com.android.support:support-v4:27.0.2'
+    api 'com.github.bumptech.glide:glide:4.5.0'
+    api 'com.android.support:design:27.0.2'
+    api 'de.greenrobot:eventbus:3.0.0-beta1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+}
+
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.HXEaseUi'
+    artifactId = 'HXEaseUi'
+    version = '1.0.0'
+    description = '火星时代环信库'
+    website = "https://github.com/hxsdAndroid"
+}

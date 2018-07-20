@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
+        versionCode 0
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+}
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.hxzbar'
+    artifactId = 'HXZbar'
+    version = '1.0.0'
+    description = '火星时代二维码扫码'
+    website = "https://github.com/hxsdAndroid"
+}

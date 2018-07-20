@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+
+    defaultConfig {
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    lintOptions{
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.squareup.okhttp3:okhttp:3.6.0'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    implementation 'com.android.support:support-v4:27.0.2'
+    implementation 'com.sobot.chat:sobotsupport-glidev4:1.0.2'
+}
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.sobotsdk'
+    artifactId = 'HXSobotsdk'
+    version = '1.0.0'
+    description = '火星时代智齿客服'
+    website = "https://github.com/hxsdAndroid"
+}

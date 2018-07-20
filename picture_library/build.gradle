@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
+        versionCode 10
+        versionName "2.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions{
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.hxsd.pictureucrop:HXPictureuCrop:1.0.0'
+    //noinspection GradleCompatible
+    api "com.android.support:appcompat-v7:27.0.2"
+    //noinspection GradleCompatible
+    api "com.android.support:recyclerview-v7:27.0.2"
+    api "com.github.bumptech.glide:glide:4.5.0"
+    api "io.reactivex.rxjava2:rxjava:2.0.5"
+    api "io.reactivex.rxjava2:rxandroid:2.0.1"
+}
+
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.pictureselector'
+    artifactId = 'HXPictureSelector'
+    version = '1.0.1'
+    description = '火星时代图片选择库'
+    website = "https://github.com/hxsdAndroid"
+}

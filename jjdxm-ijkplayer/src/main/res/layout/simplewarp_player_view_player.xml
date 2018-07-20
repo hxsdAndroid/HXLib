@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/app_video_box"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+
+    <com.dou361.ijkplayer.widget.IjkVideoView
+        android:id="@+id/video_view"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/ll_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
+
+        <!-- 封面显示-->
+        <ImageView
+            android:id="@+id/iv_trumb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="visible"/>
+    </LinearLayout>
+
+    <!--重新播放-->
+    <LinearLayout
+        android:id="@+id/app_video_replay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <!-- 播放状态-->
+        <TextView
+            android:id="@+id/app_video_status_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/small_problem"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:id="@+id/app_video_replay_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ijkplayer_play"/>
+    </LinearLayout>
+    <!-- 网络提示-->
+    <LinearLayout
+        android:id="@+id/app_video_netTie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textSize="16sp"
+            android:text="当前状态为移动网络，继续播放可能会产生\n流量费用，是否继续播放"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/app_video_netTie_icon"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/alivc_hxsd_player_nettie_btn"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="继续播放"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+
+    <!-- 最大试看时长提示-->
+    <LinearLayout
+        android:id="@+id/app_video_freeTie"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="试看时间已到请购买继续观看"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/app_video_freeTie_icon"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/alivc_hxsd_player_nettie_btn"
+            android:text="购买"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!--加载中-->
+    <LinearLayout
+        android:id="@+id/app_video_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateOnly="true"/>
+        <TextView
+            android:id="@+id/app_video_speed"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="188Kb/s"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- 中间触摸提示-->
+    <include
+        layout="@layout/simple_player_touch_gestures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <!-- 顶部栏-->
+    <include layout="@layout/simple_player_topbar"/>
+    <!-- 底部栏-->
+
+    <!-- 分辨率选择 -->
+
+    <!--设置按钮(清晰度和弹幕大小)-->
+    <LinearLayout
+        android:id="@+id/simple_player_select_stream_container"
+        android:layout_width="275dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="#E5000000"
+        android:orientation="vertical"
+        android:paddingBottom="80dp"
+        android:paddingTop="80dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_danmu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="62dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="弹幕大小"
+                android:textColor="#FF929292"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/txt_dmbig"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text="大"
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txt_dmmedium"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text="中"
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txt_dmsmall"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text="小"
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_quality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:text="播放器画质"
+                android:textColor="#FF929292"
+                android:textSize="13sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/txt_qubig"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txt_qumedium"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txt_qusmall"
+                    android:layout_width="41dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/danmu_txt_bg"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/stream_item_txt"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- 课程选择选择 -->
+    <LinearLayout
+        android:id="@+id/simple_player_select_chapter_container"
+        android:layout_width="275dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="#80000000"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <com.dou361.ijkplayer.widget.PinnedSectionListView
+            android:id="@+id/simple_player_select_chapter_list"
+            android:layout_width="275dp"
+            android:divider="#00000000"
+            android:dividerHeight="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/play_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        android:src="@drawable/simple_player_center_play" />
+
+    <include
+        layout="@layout/simple_player_controlbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

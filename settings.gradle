@@ -1,0 +1,9 @@
+include ':app',
+        ':picture_library',
+        ':ucrop',
+        ':zbar',
+        ':uikit',
+        ':easeui',
+        ':DanmakuFlameMaster',
+        ':jjdxm-ijkplayer',
+        ':sobotsdk'

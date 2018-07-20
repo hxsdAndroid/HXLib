@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="4dip"
+    android:paddingTop="4dp"
+    android:paddingLeft="7dp"
+    android:gravity="center"
+    android:paddingRight="7dp"
+    android:background="#F9F9F9">
+
+    <LinearLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="4dp" >
+
+        <Button
+            android:id="@+id/btn_set_mode_voice"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/ease_chatting_setmode_voice_btn"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_set_mode_keyboard"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/ease_chatting_setmode_keyboard_btn"
+            android:visibility="gone" />
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_more"-->
+            <!--android:layout_width="32dp"-->
+            <!--android:layout_height="32dp"-->
+            <!--android:layout_marginLeft="6dp"-->
+            <!--android:background="@drawable/ease_chatting_setmode_keyboard_btn"-->
+            <!--android:visibility="visible" />-->
+
+        <LinearLayout
+            android:id="@+id/btn_press_to_speak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/ease_chat_press_speak_btn"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/button_pushtotalk"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/edittext_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/et_sendmessage"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/ease_input_bg"
+                android:maxLines="3"
+                android:minHeight="40dp"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:hint="说点什么吧..."
+                android:textColorHint="#FF999999"
+                android:textColor="#333333"
+                android:paddingRight="10dp"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                >
+            <ImageView
+                android:id="@+id/iv_face_normal"
+                android:layout_width="24dip"
+                android:layout_height="24dip"
+                android:layout_margin="1dip"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ease_chatting_biaoqing_btn_normal"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_face_checked"
+                android:layout_width="24dip"
+                android:layout_height="24dip"
+                android:layout_margin="1dip"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ease_chatting_biaoqing_btn_enable"
+                android:visibility="gone" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <com.hyphenate.easeui.widget.LoadingView
+            android:id="@+id/input_gift"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:imageSrc="@drawable/bottle_normal"
+            app:imageSrcNoClick="@drawable/bottle_unable"
+            app:AcTextColor="#F4AE56"
+            android:padding="2dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="3dp"
+            app:AcTextSize="2dp"
+            />
+
+        <Button
+            android:id="@+id/btn_more"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ease_type_select_btn"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="7dp"
+            android:gravity="center"
+            android:paddingLeft="3dp"
+            android:background="#00000000"
+            android:text="@string/button_send"
+            android:enabled="false"
+            android:textColor="@color/send_btn"
+            android:textSize="16sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

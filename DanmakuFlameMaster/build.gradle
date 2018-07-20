@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.novoda.bintray-release'
+def SourcePath = 'src/main/'
+android {
+    publishNonDefault true
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile "${SourcePath}AndroidManifest.xml"
+            java.srcDirs = ["${SourcePath}java"]
+            jniLibs.srcDirs = ["${SourcePath}libs"]
+        }
+        androidTest.setRoot("${SourcePath}../androidTest")
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions{
+        abortOnError false
+    }
+
+}
+
+dependencies {
+}
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.HXDanmakuFlameMaster'
+    artifactId = 'HXDanmakuFlameMaster'
+    version = '1.0.0'
+    description = '火星哔哩哔哩播放器弹幕'
+    website = "https://github.com/hxsdAndroid"
+}

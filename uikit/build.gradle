@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.novoda.bintray-release'
+android {
+    publishNonDefault true
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion  rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion  rootProject.ext.android["targetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        renderscriptTargetApi rootProject.ext.android["compileSdkVersion"]
+        renderscriptSupportModeEnabled true
+//        multiDexEnabled true
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res', 'res-ptr2', 'res-chatroom']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions{
+        abortOnError false
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    api "com.android.support:appcompat-v7:27.0.2"
+    api "com.android.support.constraint:constraint-layout:1.1.1"
+    api 'me.everything:overscroll-decor-android:1.0.4'
+    api 'me.leolin:ShortcutBadger:1.1.17@aar'
+    api "com.github.bumptech.glide:glide:4.5.0"
+    api "com.github.bumptech.glide:glide:4.5.0"
+    api "com.alibaba:fastjson:1.1.62.android"
+    api "de.greenrobot:eventbus:3.0.0-beta1"
+    api 'com.hxsd.pictureselector:HXPictureSelector:1.0.1'
+}
+
+apply from: '../bintraynovoda.gradle'
+
+publish {
+    userOrg = 'hxsdandroid'
+    groupId = 'com.hxsd.uikit'
+    artifactId = 'HXUikit'
+    version = '1.0.0'
+    description = '火星时代云信库'
+    website = "https://github.com/hxsdAndroid"
+}
+
